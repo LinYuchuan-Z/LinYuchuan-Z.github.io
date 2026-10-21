@@ -15,6 +15,7 @@
 @media(max-width:720px){.app{display:block}.sidebar{position:static;height:auto;padding:18px 17px 12px;display:block}.brand-icon,.brand-sub,.side-label,.side-bottom{display:none}.brand{font-size:18px;display:flex;align-items:center;gap:8px}.brand:before{content:"▤";color:#e6c69e}.mobile-title{display:inline;font-size:10px;font-weight:400;color:#a4bdb1;letter-spacing:0}.mode-nav{display:flex;overflow:auto;gap:5px;margin-top:14px}.mode{flex:0 0 auto;width:auto;padding:7px 10px;margin:0;font-size:12px;gap:7px}.mode span:first-child{gap:4px}.mini-icon{font-size:14px;min-width:15px}.mode b{font-size:9px;padding:0 4px}.main{padding:24px 16px}.topline{align-items:center}h1{font-size:25px}.offline-chip{font-size:10px;padding:5px 8px}.stats{gap:7px;margin:20px 0}.stat{padding:10px}.stat strong{font-size:23px}.stat small{display:none}.stat-label{font-size:10px}.filters{padding:12px}.filter-row{gap:7px}.select-wrap{gap:4px}.select-wrap select{max-width:100px;padding:7px 15px 7px 6px}.search{flex-basis:100%}.checks{gap:10px;font-size:10px}.q-head{padding:19px 19px 0}.q-body{padding:17px 19px 22px}.q-stem{font-size:17px;line-height:1.85}.choice{padding:12px;gap:10px}.choice-text{font-size:13px}.q-actions{padding:14px 19px;gap:8px}.btn{padding:10px 13px;font-size:12px}.q-actions .right{margin-left:0}.nav-row{flex-wrap:wrap}.nav-right{margin-left:auto}.shortcut{display:none}.side-panel{grid-template-columns:minmax(0,1fr)}.side-review{grid-row:auto}.q-grid{grid-template-columns:repeat(8,1fr)}.side-panel .note-field{margin-top:0}.footer{line-height:1.7;flex-wrap:wrap}.mobile-tools{display:flex!important;gap:12px;margin-top:20px}.feedback{padding:14px}.session-line{font-size:11px}.note-field textarea{min-height:90px}}
 
 .module-section{margin:24px 0 0}.module-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}.module-heading h2{font-size:14px;margin:0;font-weight:600}.module-heading span{font-size:11px;color:var(--muted)}.module-tabs{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}.module-tab{border:1px solid var(--line);border-radius:10px;background:#fff;padding:11px 6px;text-align:center}.module-tab strong{display:block;font-size:17px;font-weight:600}.module-tab small{display:block;font-size:10px;color:var(--muted)}.module-tab.active{border-color:var(--green);background:var(--pale);color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}.connection-bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-top:13px;font-size:11px;color:var(--muted)}.connection-bar a{font-size:11px}.stats{margin-top:20px}.module-heading span{line-height:1.5}.offline-chip{white-space:normal;text-align:center;max-width:180px}@media(max-width:720px){.module-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}.module-section{margin-top:20px}.module-heading{align-items:flex-start}.module-heading span{max-width:165px;text-align:right}.module-tab{padding:8px 6px}.module-tab strong{font-size:16px}.connection-bar{font-size:10px}}
+.cloud-entry{margin-top:22px;border:1px solid #bfd3c4;background:#eaf3ed;border-radius:14px;padding:17px 20px}.cloud-entry strong{font-size:15px;color:#22634f}.cloud-entry p{font-size:12px;color:#566c60;margin:5px 0 12px}.cloud-entry-actions{display:flex;gap:10px;flex-wrap:wrap}.cloud-entry-actions a{text-decoration:none}.cloud-entry small{display:block;font-size:10px;color:#718084;margin-top:10px}
 </style>
 </head>
 <body>
@@ -35,7 +36,9 @@
 </aside>
 <main class="main">
  <header class="topline"><div><div class="eyebrow">学一点，记牢一点</div><h1 id="modeTitle">顺序练习</h1><p class="sub">8 个模块 · 64 周题库 · 19,471 条原始记录</p></div><div class="offline-chip"><span class="dot"></span><span id="connectionStatus" role="status">正在检查离线缓存…</span></div></header>
- <div id="storageBanner" class="banner hidden">当前浏览器未允许本地保存。练习仍可使用，请通过“导出进度”备份。</div>
+ <section id="cloudEntry" class="cloud-entry" aria-label="跨设备云同步"><div><strong>跨设备自动同步已上线</strong><p>使用同一 ChatGPT 账号登录云端版，作答、错题、收藏、笔记和练习位置自动同步。</p></div><div class="cloud-entry-actions"><a class="btn primary" href="https://module-quiz-cloud.sprytang129.chatgpt.site/" target="_blank" rel="noopener">打开云端版</a><button class="btn" id="migrateCloud">迁移本机进度到云端版</button></div><small>当前 GitHub 页面继续提供本机练习；云端版支持离线练习、联网补传。首次迁移若未自动完成，可导出进度后在云端版导入一次。</small></section>
+  <section class="module-section" aria-labelledby="moduleHeading"><div class="module-heading"><h2 id="moduleHeading">选择学习模块</h2><span>题目、错题、收藏与统计按模块展示</span></div><div class="module-tabs" id="moduleTabs" role="group" aria-label="选择模块"></div><div class="connection-bar"><span id="moduleSummary"></span><span><a href="./index.html" download="模块课题库.html">下载单文件离线版</a> · <button class="text-btn" data-action="help">离线使用说明</button></span></div></section>
+  <div id="storageBanner" class="banner hidden">当前浏览器未允许本地保存。练习仍可使用，请通过“导出进度”备份。</div>
  <section class="stats" aria-label="学习统计"><div class="stat"><div class="stat-label">已作答题目</div><strong id="statDone">0</strong><small>题</small></div><div class="stat"><div class="stat-label">客观判分正确率</div><strong id="statRate">—</strong></div><div class="stat"><div class="stat-label">待复习错题</div><strong id="statWrong">0</strong><small>题</small></div><div class="stat"><div class="stat-label">收藏题目</div><strong id="statFav">0</strong><small>题</small></div></section>
  <section class="filters" aria-label="题目筛选"><div class="filter-row">
   <label class="select-wrap" for="module">模块<select id="module"></select></label>
@@ -150,9 +153,19 @@ async function setupOffline(){
  const show=()=>{label.textContent=location.protocol==='file:'?'本地离线版':ready?(navigator.onLine?'可离线使用':'离线练习中'):(navigator.onLine?'在线使用 · 尚未缓存':'当前离线 · 尚未缓存');};show();
  window.addEventListener('online',show);window.addEventListener('offline',show);
  if(location.protocol==='file:'||!('serviceWorker' in navigator))return;
- try{await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});await navigator.serviceWorker.ready;const cache=await caches.open('module-quiz-20261021-v2');ready=!!(await cache.match(new URL('./index.html',location.href).href));show();}catch(e){label.textContent='在线可用 · 缓存未完成';}
+ try{await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});await navigator.serviceWorker.ready;const cache=await caches.open('module-quiz-20261021-v3');ready=!!(await cache.match(new URL('./index.html',location.href).href));show();}catch(e){label.textContent='在线可用 · 缓存未完成';}
 }
 
 try{init();initModuleTabs();setupOffline();}catch(error){$('loading').classList.remove('hidden');$('loading').textContent='页面载入失败：'+error.message;console.error(error);}
+</script>
+<script>
+document.getElementById('migrateCloud').onclick=()=>{
+ saveNow();const origin='https://module-quiz-cloud.sprytang129.chatgpt.site';
+ const progress={format:'module-quiz-progress',bank:BANK_VERSION,version:1,records:model.records};
+ let popup;const handler=event=>{if(event.origin!==origin||event.source!==popup||event.data?.type!=='module-quiz-transfer-ready')return;popup.postMessage({type:'module-quiz-transfer',progress},origin);window.removeEventListener('message',handler);toast('已传送本机进度，请在云端版查看同步状态');};
+ window.addEventListener('message',handler);popup=window.open(origin+'/index.html?import=github','moduleQuizCloud');
+ if(!popup){window.removeEventListener('message',handler);toast('请允许打开新页面，或先导出进度再到云端版导入');}
+ setTimeout(()=>window.removeEventListener('message',handler),180000);
+};
 </script>
 </body></html>
