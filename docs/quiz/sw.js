@@ -1,4 +1,4 @@
-const CACHE='module-quiz-20261021-v2';
+const CACHE='module-quiz-20261021-v3';
 const ROOT=new URL('./',self.location.href);
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(ASSETS.map(p=>new URL(p,ROOT).href));await self.skipWaiting();})()));
